@@ -1,2 +1,2 @@
-# Rhythm Game
-rhythm-game is a Team Airborne's rhythm game repo.
+# AltAir
+AltAir is a Team Airborne rhythm game project at the UBC Game Development Club.
