@@ -7,11 +7,12 @@ namespace CustomBeatmapMaker
     public class Note : MonoBehaviour
     {
         public StatusTracker Status;
-        private bool _isTouchingMouse;
+        public NoteContainer Container;
+        public bool IsQueuedForDeletion = false;
+        private bool _isTouchingMouse = false;
 
         void Start()
         {
-            _isTouchingMouse = false;
         }
 
         void Update()
@@ -26,6 +27,8 @@ namespace CustomBeatmapMaker
         {
             if (Status.CurrentTool == StatusTracker.Tools.Remove && _isTouchingMouse)
             {
+                IsQueuedForDeletion = true;
+                Container.CalculateHighestNote();
                 Destroy(gameObject);
             }
         }
