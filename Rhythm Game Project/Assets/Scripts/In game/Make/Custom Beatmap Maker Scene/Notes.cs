@@ -6,7 +6,7 @@ namespace CustomBeatmapMaker
 {
     public class Notes : MonoBehaviour
     {
-        public Manager CurrentManager;
+        public StatusTracker Status;
         public GameObject NotePrefab;
 
         void Update()
@@ -19,7 +19,7 @@ namespace CustomBeatmapMaker
 
         void OnMouseDown()
         {
-            if (CurrentManager.CurrentTool == Manager.Tools.Add && !CurrentManager.MouseIsHoveringClickableUI)
+            if (Status.CurrentTool == StatusTracker.Tools.Add && !Status.MouseIsHoveringClickableUI)
             {
                 AddNote();
             }
@@ -33,7 +33,7 @@ namespace CustomBeatmapMaker
 
             var noteObject = Instantiate(NotePrefab, mouseWorldPointPos, Quaternion.identity, transform);
             var noteScript = noteObject.GetComponent<Note>();
-            noteScript.CurrentManager = CurrentManager;
+            noteScript.Status = Status;
         }
     }
 }

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 55341618}
   - component: {fileID: 55341619}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: StatusTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3548494f059e6a34a98f81ab07ee1b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentManager: {fileID: 55341619}
+  Status: {fileID: 55341619}
   CurrentToolIndicator: {fileID: 118248807}
 --- !u!1 &293875941
 GameObject:
@@ -376,7 +376,6 @@ GameObject:
   - component: {fileID: 293875945}
   - component: {fileID: 293875944}
   - component: {fileID: 293875943}
-  - component: {fileID: 293875946}
   - component: {fileID: 293875947}
   m_Layer: 0
   m_Name: Remove Button
@@ -499,51 +498,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293875941}
   m_CullTransparentMesh: 1
---- !u!61 &293875946
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293875941}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &293875947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8a0d264596eb54cbab3a88d5f634a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentManager: {fileID: 55341619}
+  Status: {fileID: 55341619}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447ed5621faa0384fac6edfb2c9f7569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentManager: {fileID: 55341619}
+  Status: {fileID: 55341619}
   NotePrefab: {fileID: 1455109751348104758, guid: 4faa2ca093d894a4d836a301fabf2a2d, type: 3}
 --- !u!1 &1392421307
 GameObject:
@@ -972,7 +926,6 @@ GameObject:
   - component: {fileID: 1838016192}
   - component: {fileID: 1838016191}
   - component: {fileID: 1838016190}
-  - component: {fileID: 1838016193}
   - component: {fileID: 1838016194}
   m_Layer: 0
   m_Name: Add Button
@@ -1095,51 +1048,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838016188}
   m_CullTransparentMesh: 1
---- !u!61 &1838016193
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838016188}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &1838016194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8a0d264596eb54cbab3a88d5f634a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentManager: {fileID: 55341619}
+  Status: {fileID: 55341619}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

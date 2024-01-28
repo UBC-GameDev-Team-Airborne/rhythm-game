@@ -7,18 +7,18 @@ namespace CustomBeatmapMaker
 {
     public class Toolbar : MonoBehaviour
     {
-        public Manager CurrentManager;
+        public StatusTracker Status;
         public Text CurrentToolIndicator;
 
         public void OnAddButtonPressed()
         {
-            CurrentManager.CurrentTool = Manager.Tools.Add;
+            Status.CurrentTool = StatusTracker.Tools.Add;
             CurrentToolIndicator.text = "Add";
         }
 
         public void OnRemoveButtonPressed()
         {
-            CurrentManager.CurrentTool = Manager.Tools.Remove;
+            Status.CurrentTool = StatusTracker.Tools.Remove;
             CurrentToolIndicator.text = "Remove";
         }
     }

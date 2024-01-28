@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CustomBeatmapMaker
 {
-    public class Manager : MonoBehaviour
+    public class StatusTracker : MonoBehaviour
     {
         public enum Tools { Add, Remove };
 

@@ -6,7 +6,7 @@ namespace CustomBeatmapMaker
 {
     public class Note : MonoBehaviour
     {
-        public Manager CurrentManager;
+        public StatusTracker Status;
         private bool _isTouchingMouse;
 
         void Start()
@@ -24,7 +24,7 @@ namespace CustomBeatmapMaker
 
         void OnMouseDown()
         {
-            if (CurrentManager.CurrentTool == Manager.Tools.Remove && _isTouchingMouse)
+            if (Status.CurrentTool == StatusTracker.Tools.Remove && _isTouchingMouse)
             {
                 Destroy(gameObject);
             }

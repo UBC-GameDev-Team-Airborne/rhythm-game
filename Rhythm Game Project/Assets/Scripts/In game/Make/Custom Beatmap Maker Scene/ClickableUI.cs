@@ -7,15 +7,15 @@ namespace CustomBeatmapMaker
 {
     public class ClickableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public Manager CurrentManager;
+        public StatusTracker Status;
         public void OnPointerEnter(PointerEventData eventData)
         {
-            CurrentManager.MouseIsHoveringClickableUI = true;
+            Status.MouseIsHoveringClickableUI = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            CurrentManager.MouseIsHoveringClickableUI = false;
+            Status.MouseIsHoveringClickableUI = false;
         }
     }
 }
