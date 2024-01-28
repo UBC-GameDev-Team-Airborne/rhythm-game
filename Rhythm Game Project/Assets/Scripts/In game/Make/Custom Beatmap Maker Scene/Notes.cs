@@ -19,7 +19,7 @@ namespace CustomBeatmapMaker
 
         void OnMouseDown()
         {
-            if (CurrentManager.CurrentTool == Manager.Tools.Add)
+            if (CurrentManager.CurrentTool == Manager.Tools.Add && !CurrentManager.MouseIsHoveringClickableUI)
             {
                 AddNote();
             }

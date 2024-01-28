@@ -9,10 +9,12 @@ namespace CustomBeatmapMaker
         public enum Tools { Add, Remove };
 
         public Tools CurrentTool;
+        public bool MouseIsHoveringClickableUI;
 
         void Start()
         {
             CurrentTool = Tools.Add;
+            MouseIsHoveringClickableUI = false;
         }
     }
 }
