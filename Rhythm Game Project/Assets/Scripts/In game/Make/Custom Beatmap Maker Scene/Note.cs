@@ -7,14 +7,33 @@ namespace CustomBeatmapMaker
 {
     public class Note : MonoBehaviour
     {
+        public enum Heights { Down, Middle, Up }
+
+        public GameObject SpriteObject;
         public StatusTracker Status;
         public NoteContainer Container;
+
         public bool IsQueuedForDeletion = false;
 
+        private Heights _height = Heights.Middle;
+        public Heights Height
+        {
+            get => _height;
+            set
+            {
+                _height = value;
+
+                Color newColor;
+                if (value == Heights.Down) newColor = Color.red;
+                else if (value == Heights.Middle) newColor = Color.green;
+                else newColor = Color.blue;
+                SpriteObject.GetComponent<SpriteRenderer>().color = newColor;
+            }
+        }
+        
         private bool _isTouchingMouse = false;
         private bool _isMoving = false;
         private bool _isScaling = false;
-        
         private Vector3 _startPos;
         private Vector3 _mouseStartPos;
         private float _scaleStartX;
