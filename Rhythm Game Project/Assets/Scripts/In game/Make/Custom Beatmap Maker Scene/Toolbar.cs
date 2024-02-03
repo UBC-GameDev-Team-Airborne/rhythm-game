@@ -24,5 +24,9 @@ namespace CustomBeatmapMaker
         {
             Status.CurrentTool = StatusTracker.Tools.Scale;
         }
+        public void OnHeightButtonPressed()
+        {
+            Status.CurrentTool = StatusTracker.Tools.Height;
+        }
     }
 }

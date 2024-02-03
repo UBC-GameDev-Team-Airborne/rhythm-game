@@ -7,7 +7,7 @@ namespace CustomBeatmapMaker
 {
     public class StatusTracker : MonoBehaviour
     {
-        public enum Tools { Add, Remove, Move, Scale };
+        public enum Tools { Add, Remove, Move, Scale, Height };
 
         private Tools _currentTool;
         public Tools CurrentTool

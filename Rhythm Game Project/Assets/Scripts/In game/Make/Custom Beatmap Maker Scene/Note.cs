@@ -25,8 +25,8 @@ namespace CustomBeatmapMaker
 
                 Color newColor;
                 if (value == Heights.Down) newColor = Color.red;
-                else if (value == Heights.Middle) newColor = Color.green;
-                else newColor = Color.blue;
+                else if (value == Heights.Middle) newColor = Color.blue;
+                else newColor = Color.green;
                 SpriteObject.GetComponent<SpriteRenderer>().color = newColor;
             }
         }
@@ -34,7 +34,9 @@ namespace CustomBeatmapMaker
         private bool _isTouchingMouse = false;
         private bool _isMoving = false;
         private bool _isScaling = false;
+        private bool _isShiftingHeight = false;
         private Vector3 _startPos;
+        private Heights _startHeight;
         private Vector3 _mouseStartPos;
         private float _scaleStartX;
 
@@ -42,8 +44,9 @@ namespace CustomBeatmapMaker
 
         void Update()
         {
-            if (_isScaling) CalculateScale();
             if (_isMoving) MoveToMouse();
+            else if (_isScaling) CalculateScale();
+            else if (_isShiftingHeight) ShiftHeight();
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -70,6 +73,9 @@ namespace CustomBeatmapMaker
                 case StatusTracker.Tools.Scale:
                     OnMouseDownScale();
                     break;
+                case StatusTracker.Tools.Height:
+                    OnMouseDownHeight();
+                    break;
                 default:
                     break;
             }    
@@ -92,6 +98,12 @@ namespace CustomBeatmapMaker
             _scaleStartX = gameObject.transform.localScale.x;
             _isScaling = true;
         }
+        void OnMouseDownHeight()
+        {
+            _mouseStartPos = Helpers.GetMousePosition();
+            _startHeight = Height;
+            _isShiftingHeight = true;
+        }
 
         void OnMouseUp()
         {
@@ -102,6 +114,9 @@ namespace CustomBeatmapMaker
                     break;
                 case StatusTracker.Tools.Scale:
                     OnMouseUpScale();
+                    break;
+                case StatusTracker.Tools.Height:
+                    OnMouseUpHeight();
                     break;
                 default:
                     break;
@@ -115,17 +130,25 @@ namespace CustomBeatmapMaker
         {
             _isScaling = false;
         }
+        void OnMouseUpHeight()
+        {
+            _isShiftingHeight = false;
+        }
 
         void OnMouseOver()
         {
             _isTouchingMouse = true;
         }
-
         void OnMouseExit()
         {
             _isTouchingMouse = false;
         }
 
+        void MoveToMouse()
+        {
+            Vector3 diffOnStart = _startPos - _mouseStartPos;
+            gameObject.transform.position = Helpers.GetMousePosition() + diffOnStart;
+        }
         void CalculateScale()
         {
             Vector3 scale = gameObject.transform.localScale;
@@ -134,10 +157,17 @@ namespace CustomBeatmapMaker
             float newScaleX = Math.Max(_scaleStartX + mousePosDiff, .4f);
             gameObject.transform.localScale = new Vector3(newScaleX, scale.y, scale.z);
         }
-        void MoveToMouse()
+        void ShiftHeight()
         {
-            Vector3 diffOnStart = _startPos - _mouseStartPos;
-            gameObject.transform.position = Helpers.GetMousePosition() + diffOnStart;
+            float mouseCurrentY = Helpers.GetMousePosition().y;
+            float mousePosDiff = mouseCurrentY - _mouseStartPos.y;
+
+            int newHeight = (int)_startHeight;
+            newHeight += (int)Math.Round(mousePosDiff);
+            newHeight = Math.Max((int)Heights.Down, newHeight);
+            newHeight = Math.Min((int)Heights.Up, newHeight);
+
+            Height = (Heights)newHeight;
         }
     }
 }

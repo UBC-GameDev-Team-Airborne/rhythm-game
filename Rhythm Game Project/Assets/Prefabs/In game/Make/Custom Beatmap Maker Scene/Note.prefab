@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f624c8cfd71c9346babee5733ef7cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteObject: {fileID: 0}
+  SpriteObject: {fileID: 2031093058808251136}
   Status: {fileID: 0}
   Container: {fileID: 0}
   IsQueuedForDeletion: 0
