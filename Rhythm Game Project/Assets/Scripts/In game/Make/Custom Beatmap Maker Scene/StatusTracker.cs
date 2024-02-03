@@ -9,6 +9,7 @@ namespace CustomBeatmapMaker
         public enum Tools { Add, Remove };
 
         public Tools CurrentTool;
+        public SongMetadata Metadata;
         public bool MouseIsHoveringClickableUI;
 
         void Start()
