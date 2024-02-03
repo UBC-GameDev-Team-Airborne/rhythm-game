@@ -12,16 +12,19 @@ namespace CustomBeatmapMaker
         public bool IsQueuedForDeletion = false;
 
         private bool _isTouchingMouse = false;
-
+        private bool _isMoving = false;
         private bool _isScaling = false;
+        
+        private Vector3 _startPos;
+        private Vector3 _mouseStartPos;
         private float _scaleStartX;
-        private float _mouseStartX;
 
 
 
         void Update()
         {
             if (_isScaling) CalculateScale();
+            if (_isMoving) MoveToMouse();
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -42,6 +45,9 @@ namespace CustomBeatmapMaker
                 case StatusTracker.Tools.Remove:
                     OnMouseDownRemove();
                     break;
+                case StatusTracker.Tools.Move:
+                    OnMouseDownMove();
+                    break;
                 case StatusTracker.Tools.Scale:
                     OnMouseDownScale();
                     break;
@@ -49,10 +55,32 @@ namespace CustomBeatmapMaker
                     break;
             }    
         }
-        private void OnMouseUp()
+        void OnMouseDownRemove()
+        {
+            IsQueuedForDeletion = true;
+            Container.CalculateHighestNote();
+            Destroy(gameObject);
+        }
+        void OnMouseDownMove()
+        {
+            _mouseStartPos = Helpers.GetMousePosition();
+            _startPos = gameObject.transform.position;
+            _isMoving = true;
+        }
+        void OnMouseDownScale()
+        {
+            _mouseStartPos = Helpers.GetMousePosition();
+            _scaleStartX = gameObject.transform.localScale.x;
+            _isScaling = true;
+        }
+
+        void OnMouseUp()
         {
             switch (Status.CurrentTool)
             {
+                case StatusTracker.Tools.Move:
+                    OnMouseUpMove();
+                    break;
                 case StatusTracker.Tools.Scale:
                     OnMouseUpScale();
                     break;
@@ -60,18 +88,9 @@ namespace CustomBeatmapMaker
                     break;
             }
         }
-
-        void OnMouseDownRemove()
+        void OnMouseUpMove()
         {
-            IsQueuedForDeletion = true;
-            Container.CalculateHighestNote();
-            Destroy(gameObject);
-        }
-        void OnMouseDownScale()
-        {
-            _mouseStartX = Helpers.GetMousePosition().x;
-            _scaleStartX = gameObject.transform.localScale.x;
-            _isScaling = true;
+            _isMoving = false;
         }
         void OnMouseUpScale()
         {
@@ -90,10 +109,16 @@ namespace CustomBeatmapMaker
 
         void CalculateScale()
         {
-            var scale = gameObject.transform.localScale;
-            var mouseCurrentX = Helpers.GetMousePosition().x;
-            var newScaleX = Math.Max(_scaleStartX + mouseCurrentX - _mouseStartX, .4f);
+            Vector3 scale = gameObject.transform.localScale;
+            float mouseCurrentX = Helpers.GetMousePosition().x;
+            float mousePosDiff = mouseCurrentX - _mouseStartPos.x;
+            float newScaleX = Math.Max(_scaleStartX + mousePosDiff, .4f);
             gameObject.transform.localScale = new Vector3(newScaleX, scale.y, scale.z);
+        }
+        void MoveToMouse()
+        {
+            Vector3 diffOnStart = _startPos - _mouseStartPos;
+            gameObject.transform.position = Helpers.GetMousePosition() + diffOnStart;
         }
     }
 }
