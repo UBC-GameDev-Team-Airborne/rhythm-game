@@ -94,15 +94,14 @@ public class SongMetadata
 
     static public string GenresToCommaDelimitedString(List<SetGenres> genres)
     {
-        StringBuilder genresString = new StringBuilder();
+        if (genres.Count == 0) return "";
 
+        StringBuilder genresString = new StringBuilder();
         foreach (var genre in genres)
         {
             genresString.Append(genre.ToString());
             genresString.Append(',');
         }
-        genresString.Remove(genresString.Length - 1, 1);
-
         return genresString.ToString();
     }
 }
