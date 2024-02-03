@@ -1,14 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CustomBeatmapMaker
 {
     public class StatusTracker : MonoBehaviour
     {
-        public enum Tools { Add, Remove };
+        public enum Tools { Add, Remove, Scale };
 
-        public Tools CurrentTool;
+        private Tools _currentTool;
+        public Tools CurrentTool
+        {
+            get => _currentTool;
+            set
+            {
+                _currentTool = value;
+                CurrentToolIndicator.text = value.ToString();
+            }
+        }
+        public Text CurrentToolIndicator;
         public SongMetadata Metadata;
         public bool MouseIsHoveringClickableUI;
 

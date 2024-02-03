@@ -72,11 +72,9 @@ namespace CustomBeatmapMaker
 
         void AddNote()
         {
-            Vector3 mouseScreenSpacePos = Input.mousePosition;
-            mouseScreenSpacePos.z = 1;
-            Vector3 mouseWorldPointPos = Camera.main.ScreenToWorldPoint(mouseScreenSpacePos);
+            Vector3 mousePos = Helpers.GetMousePosition();
 
-            var noteObject = Instantiate(NotePrefab, mouseWorldPointPos, Quaternion.identity, transform);
+            var noteObject = Instantiate(NotePrefab, mousePos, Quaternion.identity, transform);
             var noteScript = noteObject.GetComponent<Note>();
             noteScript.Status = Status;
             noteScript.Container = this;

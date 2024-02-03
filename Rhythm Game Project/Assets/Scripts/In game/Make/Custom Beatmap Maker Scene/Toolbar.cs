@@ -17,5 +17,10 @@ namespace CustomBeatmapMaker
         {
             Status.CurrentTool = StatusTracker.Tools.Remove;
         }
+
+        public void OnScaleButtonPressed()
+        {
+            Status.CurrentTool = StatusTracker.Tools.Scale;
+        }
     }
 }
