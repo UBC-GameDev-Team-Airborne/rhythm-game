@@ -8261,7 +8261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 221301960}
         m_TargetAssemblyTypeName: CustomBeatmapMaker.Toolbar, Assembly-CSharp
-        m_MethodName: OnScaleButtonPressed
+        m_MethodName: OnHeightButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
