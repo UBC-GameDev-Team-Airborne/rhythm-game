@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SongInfoPrompt : ClickableUI
+/*public class SongInfoPrompt : ClickableUI
 {
     public GameObject FileNameObject;
     public GameObject TitleObject;
@@ -133,4 +133,4 @@ public class SongInfoPrompt : ClickableUI
         _previewRange2Field.text = metadata.PreviewRange.Item2.ToString();
         _difficultyDropdown.value = (int) metadata.Difficulty;
     }
-}
+}*/

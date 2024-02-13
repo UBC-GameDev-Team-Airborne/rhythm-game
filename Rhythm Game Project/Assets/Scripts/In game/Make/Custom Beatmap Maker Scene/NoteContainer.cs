@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CustomBeatmapMaker
 {
-    public class NoteContainer : MonoBehaviour
+/*    public class NoteContainer : MonoBehaviour
     {
         const float highestNoteDefault = 5f;
 
@@ -82,5 +82,5 @@ namespace CustomBeatmapMaker
             CalculateHighestNote();
         }
 
-    }
+    }*/
 }

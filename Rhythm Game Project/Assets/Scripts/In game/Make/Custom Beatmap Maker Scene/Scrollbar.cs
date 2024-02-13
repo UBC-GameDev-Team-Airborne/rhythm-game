@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace CustomBeatmapMaker
 {
-    public class ScrollbarScript : ClickableUI
+/*    public class ScrollbarScript : ClickableUI
     {
         public NoteContainer Container;
         public CameraScript Camera;
@@ -26,5 +26,5 @@ namespace CustomBeatmapMaker
         {
             return gameObject.GetComponent<Scrollbar>();
         }
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ namespace CustomBeatmapMaker
     {
         public enum Heights { Down, Middle, Up }
 
-        public GameObject SpriteObject;
+        /*public GameObject SpriteObject;
         public StatusTracker Status;
         public NoteContainer Container;
 
@@ -168,6 +168,6 @@ namespace CustomBeatmapMaker
             newHeight = Math.Min((int)Heights.Up, newHeight);
 
             Height = (Heights)newHeight;
-        }
+        }*/
     }
 }

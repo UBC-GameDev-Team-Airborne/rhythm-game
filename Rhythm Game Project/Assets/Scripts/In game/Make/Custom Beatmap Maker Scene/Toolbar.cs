@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CustomBeatmapMaker
 {
-    public class Toolbar : MonoBehaviour
+/*    public class Toolbar : MonoBehaviour
     {
         public StatusTracker Status;
 
@@ -28,5 +28,5 @@ namespace CustomBeatmapMaker
         {
             Status.CurrentTool = StatusTracker.Tools.Height;
         }
-    }
+    }*/
 }

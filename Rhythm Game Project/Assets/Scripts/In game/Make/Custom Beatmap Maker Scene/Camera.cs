@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CustomBeatmapMaker
 {
-    public class CameraScript : MonoBehaviour
+/*    public class CameraScript : MonoBehaviour
     {
         public ScrollbarScript Scrollbar;
 
@@ -27,5 +27,5 @@ namespace CustomBeatmapMaker
 
             Scrollbar.UpdateValue();
         }
-    }
+    }*/
 }

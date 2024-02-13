@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace CustomBeatmapMaker
 {
-    public class ClickableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+/*    public class ClickableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public StatusTracker Status;
         public void OnPointerEnter(PointerEventData eventData)
@@ -17,5 +17,5 @@ namespace CustomBeatmapMaker
         {
             Status.MouseIsHoveringClickableUI = false;
         }
-    }
+    }*/
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace CustomBeatmapMaker
 {
-    public class StatusTracker : MonoBehaviour
+/*    public class StatusTracker : MonoBehaviour
     {
         public enum Tools { Add, Remove, Move, Scale, Height };
 
@@ -28,5 +28,5 @@ namespace CustomBeatmapMaker
             CurrentTool = Tools.Add;
             MouseIsHoveringClickableUI = false;
         }
-    }
+    }*/
 }
