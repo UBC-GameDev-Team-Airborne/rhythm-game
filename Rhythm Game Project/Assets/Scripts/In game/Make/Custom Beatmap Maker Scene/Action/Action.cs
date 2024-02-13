@@ -8,13 +8,6 @@ namespace CustomBeatmapMaker.Action
 {
     public abstract class Action
     {
-        public Action Inverse;
-        
-        public Action()
-        {
-            Inverse = CreateInverse();
-        }
-
         public static string Vector3ToXYOrderedPairString(Vector3 vector3)
         {
             StringBuilder sb = new StringBuilder();
@@ -28,18 +21,40 @@ namespace CustomBeatmapMaker.Action
             return sb.ToString();
         }
 
-        public abstract Action CreateInverse();
         public abstract void Perform();
         public abstract override string ToString();
     }
 
     public abstract class SingleAction : Action
     {
+        public SingleAction Inverse;
         protected NoteData _data;
+        
+        public abstract SingleAction CreateInverse();
     }
 
     public abstract class MultiAction : Action
     {
-        protected List<NoteData> _data;
+        public MultiAction Inverse;
+        protected List<SingleAction> _singleActions;
+
+        public MultiAction() { }
+        public MultiAction(List<SingleAction> singleActions)
+        {
+            _singleActions = singleActions;
+            Inverse = CreateInverse();
+        }
+
+        public MultiAction CreateInverse()
+        {
+            List<SingleAction> inverseActions = new List<SingleAction>();
+
+            foreach (SingleAction action in _singleActions)
+            {
+                inverseActions.Add(action.CreateInverse());
+            }
+
+            return new DeleteNotes(inverseActions);
+        }
     }
 }

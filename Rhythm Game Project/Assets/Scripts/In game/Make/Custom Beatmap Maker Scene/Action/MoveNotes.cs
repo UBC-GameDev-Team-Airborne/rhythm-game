@@ -9,26 +9,34 @@ namespace CustomBeatmapMaker.Action
     {
         private Vector3 _delta;
 
-        public MoveNotes(List<NoteData> data, Vector3 delta) : base()
+        public MoveNotes(List<NoteData> dataList, Vector3 delta)
         {
-            _data = data;
+            _singleActions = new List<SingleAction>();
             _delta = delta;
+
+            foreach (NoteData data in dataList)
+            {
+                Vector3 newPosition = data.Position + delta;
+                _singleActions.Add(new MoveNote(data, newPosition));
+            }
+
+            Inverse = CreateInverse();
         }
+        public MoveNotes(List<SingleAction> singleActions) : base(singleActions) { }
+
         public override void Perform()
-        {
-            throw new System.NotImplementedException();
-        }
-        public override Action CreateInverse()
         {
             throw new System.NotImplementedException();
         }
         public override string ToString()
         {
+            if (_singleActions.Count == 0) return _singleActions[0].ToString();
+
             StringBuilder sb = new StringBuilder();
-
-            sb.Append("Move notes by ");
+            sb.Append("Move ");
+            sb.Append(_singleActions.Count);
+            sb.Append(" notes by ");
             sb.Append(Vector3ToXYOrderedPairString(_delta));
-
             return sb.ToString();
         }
     }

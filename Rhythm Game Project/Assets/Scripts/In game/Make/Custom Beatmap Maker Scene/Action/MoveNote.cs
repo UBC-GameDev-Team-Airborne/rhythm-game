@@ -9,17 +9,19 @@ namespace CustomBeatmapMaker.Action
         private Vector3 _oldPosition;
         private Vector3 _newPosition;
 
-        public MoveNote(NoteData data, Vector3 newPosition) : base()
+        public MoveNote(NoteData data, Vector3 newPosition)
         {
             _data = data;
             _oldPosition = data.Position;
             _newPosition = newPosition;
+
+            Inverse = CreateInverse();
         }
         public override void Perform()
         {
             throw new System.NotImplementedException();
         }
-        public override Action CreateInverse()
+        public override SingleAction CreateInverse()
         {
             NoteData inverseData = new NoteData(_newPosition, _data.Scale, _data.Height);
             return new MoveNote(inverseData, _oldPosition);

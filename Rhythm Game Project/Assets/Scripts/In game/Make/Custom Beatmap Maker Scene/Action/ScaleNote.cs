@@ -9,17 +9,19 @@ namespace CustomBeatmapMaker.Action
         private Vector3 _oldScale;
         private Vector3 _newScale;
 
-        public ScaleNote(NoteData data, Vector3 endScale) : base()
+        public ScaleNote(NoteData data, Vector3 endScale)
         {
             _data = data;
             _oldScale = data.Position;
             _newScale = endScale;
+
+            Inverse = CreateInverse();
         }
         public override void Perform()
         {
             throw new System.NotImplementedException();
         }
-        public override Action CreateInverse()
+        public override SingleAction CreateInverse()
         {
             NoteData inverseData = new NoteData(_data.Position, _newScale, _data.Height);
             return new ScaleNote(inverseData, _oldScale);

@@ -6,24 +6,31 @@ namespace CustomBeatmapMaker.Action
 {
     public class DeleteNotes : MultiAction
     {
-        public DeleteNotes(List<NoteData> data) : base()
+        public DeleteNotes(List<NoteData> dataList)
         {
-            _data = data;
+            _singleActions = new List<SingleAction>();
+
+            foreach (NoteData data in dataList)
+            {
+                _singleActions.Add(new DeleteNote(data));
+            }
+
+            Inverse = CreateInverse();
         }
+        public DeleteNotes(List<SingleAction> singleActions) : base(singleActions) { }
+
         public override void Perform()
         {
             throw new System.NotImplementedException();
         }
-        public override Action CreateInverse()
-        {
-            return new CreateNotes(_data);
-        }
         public override string ToString()
         {
-            if (_data.Count == 1) return _data[0].ToString();
+            if (_singleActions.Count == 0) return _singleActions[0].ToString();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("Delete notes");
+            sb.Append("Delete ");
+            sb.Append(_singleActions.Count);
+            sb.Append(" notes");
             return sb.ToString();
         }
     }

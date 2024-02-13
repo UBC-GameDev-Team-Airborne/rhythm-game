@@ -5,15 +5,16 @@ namespace CustomBeatmapMaker.Action
 {
     public class CreateNote : SingleAction
     {
-        public CreateNote(NoteData data) : base()
+        public CreateNote(NoteData data)
         {
             _data = data;
+            Inverse = CreateInverse();
         }
         public override void Perform()
         {
             throw new System.NotImplementedException();
         }
-        public override Action CreateInverse()
+        public override SingleAction CreateInverse()
         {
             return new DeleteNote(_data);
         }
