@@ -1,8 +1,5 @@
-using Data;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace CustomBeatmapMaker.Action
 {
@@ -25,33 +22,5 @@ namespace CustomBeatmapMaker.Action
         public abstract void Perform();
         public abstract Action CreateInverse();
         public abstract override string ToString();
-    }
-
-    public abstract class SingleAction : Action
-    {
-        protected NoteData _data;
-    }
-
-    public abstract class MultiAction : Action
-    {
-        protected List<SingleAction> _singleActions;
-
-        public MultiAction() { }
-        public MultiAction(List<SingleAction> singleActions)
-        {
-            _singleActions = singleActions;
-            Inverse = CreateInverse();
-        }
-        
-        public List<SingleAction> GetSingleActionInverses()
-        {
-            List<SingleAction> inverseActions = new List<SingleAction>();
-            foreach (SingleAction action in _singleActions) inverseActions.Add(action.CreateInverse() as SingleAction);
-            return inverseActions;
-        }
-        public override void Perform()
-        {
-            foreach (SingleAction singleAction in _singleActions) singleAction.Perform();
-        }
     }
 }
