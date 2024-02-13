@@ -6,14 +6,14 @@ namespace CustomBeatmapMaker.Action
 {
     public class ChangeNoteHeight : SingleAction
     {
-        private Vector3 _startHeight;
-        private Vector3 _endHeight;
+        private Note.Heights _oldHeight;
+        private Note.Heights _newHeight;
 
-        public ChangeNoteHeight(NoteData data, Vector3 startHeight, Vector3 endHeight)
+        public ChangeNoteHeight(NoteData data, Note.Heights endHeight)
         {
             _data = data;
-            _startHeight = startHeight;
-            _endHeight = endHeight;
+            _oldHeight = data.Height;
+            _newHeight = endHeight;
         }
 
         public override void Perform()
@@ -22,7 +22,8 @@ namespace CustomBeatmapMaker.Action
         }
         public override Action CreateInverse()
         {
-            return new ChangeNoteHeight(_data, _endHeight, _startHeight);
+            NoteData inverseData = new NoteData(_data.Position, _data.Scale, _newHeight);
+            return new ChangeNoteHeight(inverseData, _oldHeight);
         }
         public override string ToString()
         {
@@ -31,9 +32,9 @@ namespace CustomBeatmapMaker.Action
             sb.Append("Change height of note at ");
             sb.Append(Vector3ToXYOrderedPairString(_data.Position));
             sb.Append(" from ");
-            sb.Append(_startHeight);
+            sb.Append(_oldHeight);
             sb.Append(" to ");
-            sb.Append(_endHeight);
+            sb.Append(_newHeight);
 
             return sb.ToString();
         }

@@ -6,14 +6,14 @@ namespace CustomBeatmapMaker.Action
 {
     public class MoveNote : SingleAction
     {
-        private Vector3 _startPosition;
-        private Vector3 _endPosition;
+        private Vector3 _oldPosition;
+        private Vector3 _newPosition;
 
-        public MoveNote(NoteData data, Vector3 startPosition, Vector3 endPosition) : base()
+        public MoveNote(NoteData data, Vector3 newPosition) : base()
         {
             _data = data;
-            _startPosition = startPosition;
-            _endPosition = endPosition;
+            _oldPosition = data.Position;
+            _newPosition = newPosition;
         }
         public override void Perform()
         {
@@ -21,16 +21,17 @@ namespace CustomBeatmapMaker.Action
         }
         public override Action CreateInverse()
         {
-            return new MoveNote(_data, _endPosition, _startPosition);
+            NoteData inverseData = new NoteData(_newPosition, _data.Scale, _data.Height);
+            return new MoveNote(inverseData, _oldPosition);
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("Move note from ");
-            sb.Append(Vector3ToXYOrderedPairString(_startPosition));
+            sb.Append(Vector3ToXYOrderedPairString(_oldPosition));
             sb.Append(" to ");
-            sb.Append(Vector3ToXYOrderedPairString(_endPosition));
+            sb.Append(Vector3ToXYOrderedPairString(_newPosition));
 
             return sb.ToString();
         }

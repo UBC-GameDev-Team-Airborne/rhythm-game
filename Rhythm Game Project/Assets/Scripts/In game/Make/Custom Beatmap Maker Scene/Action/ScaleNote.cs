@@ -6,14 +6,14 @@ namespace CustomBeatmapMaker.Action
 {
     public class ScaleNote : SingleAction
     {
-        private Vector3 _startScale;
-        private Vector3 _endScale;
+        private Vector3 _oldScale;
+        private Vector3 _newScale;
 
-        public ScaleNote(NoteData data, Vector3 startScale, Vector3 endScale) : base()
+        public ScaleNote(NoteData data, Vector3 endScale) : base()
         {
             _data = data;
-            _startScale = startScale;
-            _endScale = endScale;
+            _oldScale = data.Position;
+            _newScale = endScale;
         }
         public override void Perform()
         {
@@ -21,16 +21,17 @@ namespace CustomBeatmapMaker.Action
         }
         public override Action CreateInverse()
         {
-            return new ScaleNote(_data, _endScale, _startScale);
+            NoteData inverseData = new NoteData(_data.Position, _newScale, _data.Height);
+            return new ScaleNote(inverseData, _oldScale);
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("Scale note from ");
-            sb.Append(_startScale.x);
+            sb.Append(_oldScale.x);
             sb.Append(" to ");
-            sb.Append(_endScale.x);
+            sb.Append(_newScale.x);
 
             return sb.ToString();
         }
