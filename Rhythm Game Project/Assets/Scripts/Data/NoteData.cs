@@ -6,11 +6,13 @@ namespace Data
 {
     public class NoteData
     {
+        public enum Heights { Down, Middle, Up }
+
         public Vector3 Position;
         public Vector3 Scale;
-        public Note.Heights Height;
+        public Heights Height;
 
-        public NoteData(Vector3 position, Vector3 scale, Note.Heights height)
+        public NoteData(Vector3 position, Vector3 scale, Heights height)
         {
             Position = position;
             Scale = scale;

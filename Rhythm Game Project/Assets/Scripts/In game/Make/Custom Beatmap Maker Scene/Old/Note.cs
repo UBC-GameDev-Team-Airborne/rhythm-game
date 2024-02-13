@@ -7,9 +7,9 @@ namespace CustomBeatmapMaker
 {
     public class Note : MonoBehaviour
     {
-        public enum Heights { Down, Middle, Up }
-
-        /*public GameObject SpriteObject;
+        /*public enum Heights { Down, Middle, Up }
+        
+        public GameObject SpriteObject;
         public StatusTracker Status;
         public NoteContainer Container;
 

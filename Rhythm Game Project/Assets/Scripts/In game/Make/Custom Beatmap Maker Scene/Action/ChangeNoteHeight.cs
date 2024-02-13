@@ -6,10 +6,10 @@ namespace CustomBeatmapMaker.Action
 {
     public class ChangeNoteHeight : SingleAction
     {
-        private Note.Heights _oldHeight;
-        private Note.Heights _newHeight;
+        private NoteData.Heights _oldHeight;
+        private NoteData.Heights _newHeight;
 
-        public ChangeNoteHeight(NoteData data, Note.Heights endHeight)
+        public ChangeNoteHeight(NoteData data, NoteData.Heights endHeight)
         {
             _data = data;
             _oldHeight = data.Height;
