@@ -51,16 +51,16 @@ public class SongInfoPrompt : ClickableUI
     public void SetMetadata()
     {
         GetComponents();
-        SongMetadata metadata = new SongMetadata();
+        Data.SongData metadata = new Data.SongData();
 
 
-        metadata.FileName = _fileNameField.text;
+        metadata.SongFileName = _fileNameField.text;
 
         metadata.Title = _titleField.text;
 
-        metadata.Artist = _artistField.text;
+        //metadata.Artist = _artistField.text;
 
-        metadata.Genres = SongMetadata.CommaDelimitedStringToGenres(_genresField.text);
+        metadata.Genres = Data.SongData.CommaDelimitedStringToGenres(_genresField.text);
 
         metadata.Language = _languageField.text;
 
@@ -78,7 +78,7 @@ public class SongInfoPrompt : ClickableUI
 
         int difficultyIndex = _difficultyDropdown.value;
         string diffycultyString = _difficultyDropdown.options[difficultyIndex].text;
-        metadata.Difficulty = SongMetadata.StringToDifficulty(diffycultyString);
+        metadata.Difficulty = Data.SongData.StringToDifficulty(diffycultyString);
 
 
         if (!metadata.AFieldIsNull()) Status.Metadata = metadata;
@@ -118,13 +118,13 @@ public class SongInfoPrompt : ClickableUI
 
     void RecoverFields()
     {
-        SongMetadata metadata = Status.Metadata;
+        Data.SongData metadata = Status.Metadata;
         if (metadata == null) return;
 
-        _fileNameField.text = metadata.FileName;
+        _fileNameField.text = metadata.SongFileName;
         _titleField.text = metadata.Title;
-        _artistField.text = metadata.Artist;
-        _genresField.text = SongMetadata.GenresToCommaDelimitedString(metadata.Genres);
+        //_artistField.text = metadata.Artist;
+        _genresField.text = Data.SongData.GenresToCommaDelimitedString(metadata.Genres);
         _languageField.text = metadata.Language;
         _isOriginalDropdown.value = (bool) metadata.IsOriginal ? 1 : 0;
         _bpmField.text = metadata.BPM.ToString();

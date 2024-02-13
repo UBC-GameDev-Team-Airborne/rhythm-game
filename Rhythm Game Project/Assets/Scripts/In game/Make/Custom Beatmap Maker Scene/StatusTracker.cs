@@ -20,7 +20,7 @@ namespace CustomBeatmapMaker
             }
         }
         public Text CurrentToolIndicator;
-        public SongMetadata Metadata;
+        public Data.SongData Metadata;
         public bool MouseIsHoveringClickableUI;
 
         void Start()
