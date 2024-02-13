@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public class ActionManager
     {

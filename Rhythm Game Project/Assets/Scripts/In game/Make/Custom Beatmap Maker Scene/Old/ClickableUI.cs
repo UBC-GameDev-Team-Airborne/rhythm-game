@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace CustomBeatmapMaker
+namespace Make.CustomBeatmapMaker
 {
 /*    public class ClickableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

@@ -1,4 +1,4 @@
-using CustomBeatmapMaker;
+using Make.CustomBeatmapMaker;
 using System;
 using System.Collections;
 using System.Collections.Generic;

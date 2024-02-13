@@ -1,7 +1,7 @@
 using Data;
 using System.Text;
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public class CreateNote : SingleAction
     {

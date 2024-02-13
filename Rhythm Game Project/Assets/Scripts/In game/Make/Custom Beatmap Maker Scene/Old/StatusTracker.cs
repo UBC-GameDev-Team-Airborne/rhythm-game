@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CustomBeatmapMaker
+namespace Make.CustomBeatmapMaker
 {
 /*    public class StatusTracker : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using Data;
 
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public abstract class SingleAction : Action
     {

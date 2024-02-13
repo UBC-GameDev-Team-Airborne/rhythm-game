@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-namespace CustomBeatmapMaker
+namespace Make.CustomBeatmapMaker
 {
     public class Note : MonoBehaviour
     {

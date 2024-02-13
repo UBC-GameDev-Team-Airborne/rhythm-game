@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CustomBeatmapMaker
+namespace Make.CustomBeatmapMaker
 {
 /*    public class CameraScript : MonoBehaviour
     {

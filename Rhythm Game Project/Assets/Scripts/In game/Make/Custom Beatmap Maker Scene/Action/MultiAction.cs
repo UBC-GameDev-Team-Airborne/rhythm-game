@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public abstract class MultiAction : Action
     {

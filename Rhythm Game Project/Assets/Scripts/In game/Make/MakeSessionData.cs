@@ -1,12 +1,15 @@
 using Data;
 
-public class MakeSessionData
+namespace Make
 {
-    public static bool IsDeveloperMode = false;
-    public static SongData LoadedSong = null;
-
-    public static void ClearSong()
+    public class SessionData
     {
-        LoadedSong = null;
+        public static bool IsDeveloperMode = false;
+        public static SongData LoadedSong = null;
+
+        public static void ClearSong()
+        {
+            LoadedSong = null;
+        }
     }
 }

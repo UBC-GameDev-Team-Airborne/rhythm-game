@@ -2,7 +2,7 @@ using Data;
 using System.Text;
 using UnityEngine;
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public class MoveNote : SingleAction
     {

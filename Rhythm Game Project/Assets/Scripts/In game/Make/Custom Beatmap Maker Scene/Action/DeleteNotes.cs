@@ -2,7 +2,7 @@ using Data;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CustomBeatmapMaker.Action
+namespace Make.CustomBeatmapMaker.Action
 {
     public class DeleteNotes : MultiAction
     {
