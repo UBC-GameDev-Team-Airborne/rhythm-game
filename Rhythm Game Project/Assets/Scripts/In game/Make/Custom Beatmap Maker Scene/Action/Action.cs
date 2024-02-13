@@ -42,7 +42,13 @@ namespace CustomBeatmapMaker.Action
             _singleActions = singleActions;
             Inverse = CreateInverse();
         }
-
+        
+        public List<SingleAction> GetSingleActionInverses()
+        {
+            List<SingleAction> inverseActions = new List<SingleAction>();
+            foreach (SingleAction action in _singleActions) inverseActions.Add(action.CreateInverse() as SingleAction);
+            return inverseActions;
+        }
         public override void Perform()
         {
             foreach (SingleAction singleAction in _singleActions) singleAction.Perform();

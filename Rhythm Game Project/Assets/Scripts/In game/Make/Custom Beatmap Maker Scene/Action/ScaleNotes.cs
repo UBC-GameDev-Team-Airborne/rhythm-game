@@ -26,10 +26,7 @@ namespace CustomBeatmapMaker.Action
 
         public override Action CreateInverse()
         {
-            List<SingleAction> inverseActions = new List<SingleAction>();
-            foreach (SingleAction action in _singleActions) inverseActions.Add(action.CreateInverse() as SingleAction);
-
-            return new ScaleNotes(inverseActions);
+            return new ScaleNotes(GetSingleActionInverses());
         }
         public override string ToString()
         {
