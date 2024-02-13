@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using UnityEngine;
 
 namespace Make.CustomBeatmapMaker.Action
 {
-    public class ActionManager
+    public class ActionManagerScript : MonoBehaviour
     {
         public ReadOnlyCollection<Action> UndoStack => _undoStack.ToList().AsReadOnly();
         private Stack<Action> _undoStack { get; set; }
         private Stack<Action> _redoStack { get; set; }
 
-        public ActionManager()
+        private void Start()
         {
             _undoStack = new Stack<Action>();
             _redoStack = new Stack<Action>();
