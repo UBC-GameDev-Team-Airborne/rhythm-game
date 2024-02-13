@@ -24,9 +24,12 @@ namespace CustomBeatmapMaker.Action
         }
         public ScaleNotes(List<SingleAction> singleActions) : base(singleActions) { }
 
-        public override void Perform()
+        public override Action CreateInverse()
         {
-            throw new System.NotImplementedException();
+            List<SingleAction> inverseActions = new List<SingleAction>();
+            foreach (SingleAction action in _singleActions) inverseActions.Add(action.CreateInverse() as SingleAction);
+
+            return new ScaleNotes(inverseActions);
         }
         public override string ToString()
         {

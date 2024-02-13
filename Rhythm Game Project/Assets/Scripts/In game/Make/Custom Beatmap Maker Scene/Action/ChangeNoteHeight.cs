@@ -20,7 +20,7 @@ namespace CustomBeatmapMaker.Action
         {
             throw new System.NotImplementedException();
         }
-        public override SingleAction CreateInverse()
+        public override Action CreateInverse()
         {
             NoteData inverseData = new NoteData(_data.Position, _data.Scale, _newHeight);
             return new ChangeNoteHeight(inverseData, _oldHeight);

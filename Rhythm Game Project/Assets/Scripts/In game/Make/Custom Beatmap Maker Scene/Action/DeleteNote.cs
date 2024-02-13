@@ -14,7 +14,7 @@ namespace CustomBeatmapMaker.Action
         {
             throw new System.NotImplementedException();
         }
-        public override SingleAction CreateInverse()
+        public override Action CreateInverse()
         {
             return new CreateNote(_data);
         }

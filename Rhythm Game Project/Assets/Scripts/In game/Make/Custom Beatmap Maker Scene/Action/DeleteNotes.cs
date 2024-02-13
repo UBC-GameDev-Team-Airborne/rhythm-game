@@ -19,9 +19,12 @@ namespace CustomBeatmapMaker.Action
         }
         public DeleteNotes(List<SingleAction> singleActions) : base(singleActions) { }
 
-        public override void Perform()
+        public override Action CreateInverse()
         {
-            throw new System.NotImplementedException();
+            List<SingleAction> inverseActions = new List<SingleAction>();
+            foreach (SingleAction action in _singleActions) inverseActions.Add(action.CreateInverse() as SingleAction);
+
+            return new CreateNotes(inverseActions);
         }
         public override string ToString()
         {
