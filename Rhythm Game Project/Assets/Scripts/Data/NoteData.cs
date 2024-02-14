@@ -6,7 +6,7 @@ namespace Data
 {
     public class NoteData
     {
-        public enum Heights { Down, Middle, Up }
+        public enum Heights { Bottom, Middle, Top }
 
         public Vector3 Position;
         public Vector3 Scale;
